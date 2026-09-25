@@ -1,0 +1,8 @@
+User-Agent: *
+Disallow: /about/gravatar_100
+Disallow: /front-page/ruby_on_rails_security_strategy_smaller
+Disallow: /front-page/ruby_on_rails_security_strategy_small
+Disallow: /page/*
+Disallow: /journal/author/extern
+Disallow: /journal/author/rorsecurity
+Disallow: /archive/*

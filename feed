@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+  xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+  >
+
+<channel>
+  <title>Ruby on Rails Security Project</title>
+  <atom:link href="https://rorsecurity.info/feed" rel="self" type="application/rss+xml" />
+  <link>https://rorsecurity.info/</link>
+  <description>Hand-picked Rails security resources</description>
+  <lastBuildDate>Fri, 09 Feb 2024 07:58:09 +0000</lastBuildDate>
+  <language>en-US</language>
+  <sy:updatePeriod>
+  hourly  </sy:updatePeriod>
+  <sy:updateFrequency>
+  1 </sy:updateFrequency>
+  <generator>https://wordpress.org/?v=7.0.4</generator>
+
+<image>
+  <url>https://rorsecurity.info/wp-content/uploads/2015/07/favicon512_bigger-55b0b104v1_site_icon-32x32.png</url>
+  <title>Ruby on Rails Security Project</title>
+  <link>https://rorsecurity.info/</link>
+  <width>32</width>
+  <height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">97667207</site>  <item>
+    <title>Gem security updates, AWS auditing &#038; password hash hacking: Rails ? digest #25</title>
+    <link>https://rorsecurity.info/journal/2017/06/26/gem-security-updates-aws-auditing-password-hash-hacking-rails-security-digest-25.html</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Mon, 26 Jun 2017 11:32:59 +0000</pubDate>
+        <category><![CDATA[Updates]]></category>
+    <guid isPermaLink="false">https://rorsecurity.info/?p=682</guid>
+
+          <description><![CDATA[<p>Hacker, Hack Thyself A good read about the worst-case scenario, stolen password hashes. A rate of 600 passwords in 3 weeks seems to be possible even with slow algorithms. Free tools for auditing the security of an AWS account Comparing several authentication approaches and their security Safari will soon come with an Intelligent Tracking Prevention &#8230;</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/06/26/gem-security-updates-aws-auditing-password-hash-hacking-rails-security-digest-25.html">Gem security updates, AWS auditing &#038; password hash hacking: Rails ? digest #25</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<h4><a href="https://blog.codinghorror.com/hacker-hack-thyself/" target="_blank" rel="noopener">Hacker, Hack Thyself</a></h4>
+<div>A good read about the worst-case scenario, stolen password hashes. A rate of 600 passwords in 3 weeks seems to be possible even with slow algorithms.</div>
+<div>
+<hr>
+</div>
+<h4><a href="https://summitroute.com/blog/2017/05/30/free_tools_for_auditing_the_security_of_an_aws_account/" target="_blank" rel="noopener">Free tools for auditing the security of an AWS account</a></h4>
+<div>
+<hr>
+</div>
+<h4><a href="https://www.smashingmagazine.com/2016/06/the-current-state-of-authentication-we-have-a-password-problem/" target="_blank" rel="noopener">Comparing several authentication approaches and their security</a></h4>
+<hr>
+<h4><a href="https://webkit.org/blog/7675/intelligent-tracking-prevention/" target="_blank" rel="noopener">Safari will soon come with an Intelligent Tracking Prevention to prevent privacy violations by advertisers and their tracking cookies.</a></h4>
+<div>
+<hr>
+</div>
+<h4><a href="https://www.elie.net/blog/security/understanding-the-prevalence-of-web-traffic-interception" target="_blank" rel="noopener">Understanding the prevalence of web traffic interception</a></h4>
+<div>4-10% of encrypted web traffic is intercepted. Not all these interceptions are malicious. Antivirus solutions, firewalls perform interception mostly by installing their own certificate on the user&#8217;s machine. But the interception affects security due to basic cryptographic mistakes. Between 16-37% of the outgoing connections are easily vulnerable to man-in-the-middle attacks.</div>
+<div>
+<hr>
+</div>
+<h4><a href="https://blog.arkency.com/2017/06/testing-cookies-in-rails/" target="_blank" rel="noopener">Want to add tests for your cookie and session flags?</a></h4>
+<div>
+<hr>
+</div>
+<div>&nbsp;<a style="font-family: inherit; font-size: 18px; font-weight: 600; background-color: #ffffff;" href="https://nvisium.com/blog/2017/06/21/securing-github-commits-with-gpg-signing/" target="_blank" rel="noopener">Impersonate someone on Github? Use GPG signing.</a></div>
+<div>
+<hr>
+</div>
+<div><a style="font-family: inherit; font-size: 18px; font-weight: 600; background-color: #ffffff;" href="https://ryanbigg.com/2017/06/current-considered-harmful" target="_blank" rel="noopener">Opinion on a new Rails commit which effectively introduces a global state to Rails apps</a></div>
+<div>
+<hr>
+</div>
+<div>&nbsp;<b style="color: inherit; font-family: inherit; font-size: 30px;">Security updates</b></div>
+<div>All RabbitMQ versions before 3.6.9 have <a href="https://pivotal.io/security/cve-2017-4965" target="_blank" rel="noopener">several XSS vulnerabilities</a> and <a href="https://pivotal.io/security/cve-2017-4966" target="_blank" rel="noopener">a medium one </a></div>
+<div>
+<hr>
+</div>
+<h4><a href="https://github.com/mikel/mail/pull/1097" target="_blank" rel="noopener">The mail gem was vulnerable to header injection in versions &lt; 2.5.5. All 2.6 versions were not vulnerable due to a bug. Install 2.6.6 to get the fix for the vulnerability.</a></h4>
+<div>
+<hr>
+</div>
+<h4><a href="https://thenewstack.io/new-apache-http-server-release-fixes-auth-bypass-denial-service-flaws/" target="_blank" rel="noopener">New Apache HTTP Server Release Fixes Authentication Bypass, Denial-of-Service Flaws</a></h4>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/06/26/gem-security-updates-aws-auditing-password-hash-hacking-rails-security-digest-25.html">Gem security updates, AWS auditing &#038; password hash hacking: Rails ? digest #25</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">682</post-id> </item>
+    <item>
+    <title>Rails and web security reading list ? #24</title>
+    <link>https://rorsecurity.info/journal/2017/05/19/rails-web-security-reading-list-24.html</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Fri, 19 May 2017 14:12:27 +0000</pubDate>
+        <category><![CDATA[Updates]]></category>
+    <guid isPermaLink="false">https://rorsecurity.info/?p=673</guid>
+
+          <description><![CDATA[<p>New Rails 5.1 came out recently It includes encrypted secrets and supports JS package mangers for easier updates. That&#8217;s important too because of JS vulnerabilities. New version for authorization framework CanCanCan Check and update your SSH keys with this easy command Which security implications of the Serverless approach are better or worse? And another post &#8230;</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/05/19/rails-web-security-reading-list-24.html">Rails and web security reading list ? #24</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<h4><a href="https://weblog.rubyonrails.org/2017/4/27/Rails-5-1-final/" target="_blank" rel="noopener noreferrer">New Rails 5.1 came out recently<br />
+</a></h4>
+<p>It includes encrypted secrets and supports JS package mangers for easier updates. That&#8217;s important too because of JS vulnerabilities.</p>
+<div>
+<hr />
+</div>
+<div></div>
+<h4><a href="https://medium.com/@coorasse/cancancan-2-0-is-out-98abbf8f32d4" target="_blank" rel="noopener noreferrer">New version for authorization framework CanCanCan</a></h4>
+<div>
+<hr />
+</div>
+<h4><a href="https://blog.g3rt.nl/upgrade-your-ssh-keys.html" target="_blank" rel="noopener noreferrer">Check and update your SSH keys with this easy command</a></h4>
+<div></div>
+<div>
+<hr />
+</div>
+<h4><a href="https://snyk.io/blog/serverless-security-implications-from-infra-to-owasp/" target="_blank" rel="noopener noreferrer">Which security implications of the Serverless approach are better or worse?</a></h4>
+<div>
+<hr />
+</div>
+<div></div>
+<h4><a href="https://highscalability.com/blog/2017/3/6/part-4-of-thinking-serverless-addressing-security-issues.html" target="_blank" rel="noopener noreferrer">And another post about serverless security issues</a></h4>
+<div></div>
+<hr />
+<h4><a href="https://donw.io/post/github-comments/" target="_blank" rel="noopener noreferrer">Replacing Disqus with Github Comments for less load time and far less tracking</a></h4>
+<div>
+<hr />
+</div>
+<h4><a href="https://www.martinvigo.com/design-flaws-lastpass-2fa-implementation/" target="_blank" rel="noopener noreferrer">Don&#8217;t repeat these 2FA design mistakes</a></h4>
+<div>
+<hr />
+</div>
+<div></div>
+<h4><a href="https://github.com/brunofacca/zen-rails-security-checklist" target="_blank" rel="noopener noreferrer">Another Rails security checklist with a few bits</a></h4>
+<div>
+<hr />
+</div>
+<div></div>
+<h4><a href="https://blog.cloudflare.com/introducing-tls-client-auth/" target="_blank" rel="noopener noreferrer">CloudFlare introduced TLS client-side authorization</a></h4>
+<hr />
+<h4><a href="https://github.com/yandex/gixy" target="_blank" rel="noopener noreferrer">Check your nginx config for security issues</a></h4>
+<div>
+<hr />
+</div>
+<h3>Security Updates</h3>
+<h4><a href="https://www.postgresql.org/about/news/1746/" target="_blank" rel="noopener noreferrer">PostgreSQL security update</a></h4>
+<div></div>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/05/19/rails-web-security-reading-list-24.html">Rails and web security reading list ? #24</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">673</post-id> </item>
+    <item>
+    <title>Rails and web security digest ⚡ #23</title>
+    <link>https://rorsecurity.info/journal/2017/04/10/rails-web-security-digest-23.html</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Mon, 10 Apr 2017 07:00:20 +0000</pubDate>
+        <category><![CDATA[Updates]]></category>
+    <guid isPermaLink="false">https://rorsecurity.info/?p=665</guid>
+
+          <description><![CDATA[<p>CodeBuild, Brakeman, and CodePipeline How to set up AWS CodeBuild (a CI server) to run brakeman Login/logout CSRF: Time to reconsider? Login/logout CSRF: Time to make them non­-GET routes (you probably have already) Rails GEMS Vulnerable to CSRF Show Vulnerability Disclosure in Open-Source Projects Needs a Re-Think Content-Security-Policy Hackeronebypass Check the popularity, maintenance and maturity &#8230;</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/04/10/rails-web-security-digest-23.html">Rails and web security digest ⚡ #23</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<h4><a href="https://nvisium.com/blog/2017/03/15/codebuild-brakeman/" target="_blank">CodeBuild, Brakeman, and CodePipeline</a></h4>
+<p>How to set up AWS CodeBuild (a CI server) to run brakeman</p>
+<hr />
+<h4><a href="https://labs.detectify.com/2017/03/15/loginlogout-csrf-time-to-reconsider/" target="_blank">Login/logout CSRF: Time to reconsider?</a></h4>
+<p>Login/logout CSRF: Time to make them non­-GET routes (you probably have already)</p>
+<hr />
+<h4><a href="https://www.sourceclear.com/blog/Rails-GEMS-Vulnerable-to-CSRF-Show-Vulnerability-Disclosure-in-Open-Source-Projects-Needs-a-Re-Think/" target="_blank">Rails GEMS Vulnerable to CSRF Show Vulnerability Disclosure in Open-Source Projects Needs a Re-Think</a></h4>
+<hr />
+<h4><a href="https://hackerone.com/reports/199779?utm_content=buffer415d7&amp;utm_medium=social&amp;utm_source=linkedin.com&amp;utm_campaign=buffer" target="_blank">Content-Security-Policy Hackeronebypass</a></h4>
+<hr />
+<h4><a href="https://evilmartians.com/chronicles/open-source-software-whats-in-a-poke" target="_blank">Check the popularity, maintenance and maturity of gems before using</a></h4>
+<hr />
+<h4><a href="https://robots.thoughtbot.com/validation-database-constraint-or-both" target="_blank">Validation, Database Constraint, or Both?</a></h4>
+<hr />
+<h4><strong>Vulnerabilities </strong></h4>
+<h4><a href="https://nvd.nist.gov/vuln/detail/CVE-2016-7103" target="_blank">Update jQuery UI to 1.12.0</a></h4>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/04/10/rails-web-security-digest-23.html">Rails and web security digest ⚡ #23</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">665</post-id> </item>
+    <item>
+    <title>Rails and web application security ? Sunday #22</title>
+    <link>https://rorsecurity.info/journal/2017/03/12/rails-web-application-security-sunday-22.html</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Sun, 12 Mar 2017 12:57:34 +0000</pubDate>
+        <category><![CDATA[Updates]]></category>
+    <guid isPermaLink="false">https://rorsecurity.info/?p=652</guid>
+
+          <description><![CDATA[<p>Upcoming Rails 5.1 will containencrypted secrets The feature came in with this pull request and was inspired by the sekrets gem. This allows you to commit encrypted production secrets. The encryption happens using a master key which will live in an env var (production). Or in a git-ignored file (development). This video explains the process. &#8230;</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/03/12/rails-web-application-security-sunday-22.html">Rails and web application security ? Sunday #22</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<div class="m_-9198087104068305653gmail-">
+<div class="m_-9198087104068305653gmail-public-DraftStyleDefault-block m_-9198087104068305653gmail-public-DraftStyleDefault-ltr"><a href="https://weblog.rubyonrails.org/2017/2/23/Rails-5-1-beta1/" target="_blank">Upcoming Rails 5.1 will containencrypted secrets</a></div>
+</div>
+<div class="m_-9198087104068305653gmail-">
+<div class="m_-9198087104068305653gmail-public-DraftStyleDefault-block m_-9198087104068305653gmail-public-DraftStyleDefault-ltr">The feature came in with this <a href="https://github.com/rails/rails/pull/28038" target="_blank">pull request</a> and <span class="m_-9198087104068305653gmail-passivevoice">was inspired by</span> the <a href="https://github.com/ahoward/sekrets" target="_blank">sekrets gem</a>. This allows you to commit encrypted production secrets. The encryption happens using a master key which will live in an env var (production). Or in a git-ignored file (development). <a href="https://youtu.be/axKOOsXf8M4?t=6m31s" target="_blank">This video</a> explains the process.</div>
+</div>
+<div class="m_-9198087104068305653gmail-">
+<hr />
+</div>
+<div class="m_-9198087104068305653gmail-">
+<div class="m_-9198087104068305653gmail-public-DraftStyleDefault-block m_-9198087104068305653gmail-public-DraftStyleDefault-ltr"><a href="https://labs.detectify.com/2017/02/28/hacking-slack-using-postmessage-and-websocket-reconnect-to-steal-your-precious-token/" target="_blank">This Slack hack shows how not to use addEventListener and postMessage</a></div>
+<div class="m_-9198087104068305653gmail-public-DraftStyleDefault-block m_-9198087104068305653gmail-public-DraftStyleDefault-ltr">They fixed it within 5 hours, but the <a href="https://labs.detectify.com/2016/12/08/the-pitfalls-of-postmessage/" target="_blank">pitfalls of the JS postMessage API</a> might live in your code, as well. In short: Specify which origin may receive the message and <span class="m_-9198087104068305653gmail-complexword">validate</span> the origin on the other side.</div>
+</div>
+<div class="m_-9198087104068305653gmail-">
+<div class="m_-9198087104068305653gmail-public-DraftStyleDefault-block m_-9198087104068305653gmail-public-DraftStyleDefault-ltr">
+<hr />
+<p>Used to Rails&#8217; security? Check your plain Ruby code using Net::HTTP</p>
+</div>
+<div class="m_-9198087104068305653gmail-public-DraftStyleDefault-block m_-9198087104068305653gmail-public-DraftStyleDefault-ltr">The <a href="https://hackerone.com/reports/146416" target="_blank">long discussion here</a> makes clear (again) that we&#8217;ve to take good care of user input and Net::HTTP. Hint: Line breaks lead to HTTP header injection.</div>
+</div>
+<div class="m_-9198087104068305653gmail-">
+<hr />
+<p><a href="https://blog.agilebits.com/2017/02/23/three-layers-of-encryption-keeps-you-safe-when-ssltls-fails/" target="_blank">What about security if SSL/TLS fails?</a></p>
+</div>
+<div class="m_-9198087104068305653gmail-"><span class="m_-9198087104068305653gmail-hardreadability">The </span><a href="https://blog.cloudflare.com/incident-report-on-memory-leak-caused-by-cloudflare-parser-bug/" target="_blank">recent memory leak in Cloudflare</a><span class="m_-9198087104068305653gmail-hardreadability"> showed various secrets to random visitors of </span><a href="https://github.com/pirate/sites-using-cloudflare/blob/master/README.md" target="_blank">these sites</a>. Also, read these <a href="https://www.troyhunt.com/pragmatic-thoughts-on-cloudbleed/" target="_blank">pragmatic thoughts about #Cloudbleed</a>.</div>
+<div class="m_-9198087104068305653gmail-">
+<div class="m_-9198087104068305653gmail-public-DraftStyleDefault-block m_-9198087104068305653gmail-public-DraftStyleDefault-ltr">But 1Password shows us how important it is to think about the worst-case scenario. <span class="m_-9198087104068305653gmail-hardreadability">They use a Secure Remote Password protocol where the client and server prove their identity to each other</span>.</div>
+</div>
+<div class="m_-9198087104068305653gmail-">
+<hr />
+<p><a href="https://developers.google.com/recaptcha/docs/versions" target="_blank">Google introduces the invisible reCaptcha</a></p>
+</div>
+<div class="m_-9198087104068305653gmail-">
+<hr />
+<p><a href="https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html" target="_blank">Time to finally stop using SHA1</a></p>
+</div>
+<div class="m_-9198087104068305653gmail-">But also read the <a href="https://plus.google.com/+LinusTorvalds/posts/7tp2gYWQugL" target="_blank">pragmatic thoughts</a> of Linus Torvalds about the matter.</div>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/03/12/rails-web-application-security-sunday-22.html">Rails and web application security ? Sunday #22</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">652</post-id> </item>
+    <item>
+    <title>Safer debugging, postmortem and security reading list ?#22</title>
+    <link>https://rorsecurity.info/journal/2017/02/20/safer-debugging-postmortem-security-reading-list.html</link>
+    
+    <dc:creator><![CDATA[Heiko]]></dc:creator>
+    <pubDate>Mon, 20 Feb 2017 13:45:50 +0000</pubDate>
+        <category><![CDATA[Updates]]></category>
+    <guid isPermaLink="false">https://rorsecurity.info/?p=643</guid>
+
+          <description><![CDATA[<p>Lots of web applicationsecurity articles last week again. So here are the most interesting ones. Phillip shares a way to color­-code the PRY console in a production environment. He always has 2 debugging consoles open side by side. One in production and one in development. You know what can happen. A good example of a &#8230;</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/02/20/safer-debugging-postmortem-security-reading-list.html">Safer debugging, postmortem and security reading list ?#22</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<p>Lots of web applicationsecurity articles last week again. So here are the most interesting ones.</p>
+<ul>
+<li>Phillip shares a way to <a href="https://phansch.net/2017/02/12/a-better-pry-prompt-for-rails-console/" target="_blank">color­-code the PRY console</a> in a production environment. He always has 2 debugging consoles open side by side. One in production and one in development. You know what can happen.</li>
+<li>A good example of a <a href="https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/" target="_blank">postmortem</a> for the Gitlab disaster, including the issue tickets. Similar steps might be needed after a security incident.</li>
+<li>The <a href="https://blog.mozilla.org/security/2017/01/29/mozilla-security-bytes-episode-1-csp/" target="_blank">Mozilla Security Bytes</a> podcast starts with an episode on the Content­Security­-Policy.</li>
+<li>If you&#8217;re using Docker, there are now <a href="https://blog.docker.com/2017/02/docker-secrets-management/" target="_blank">Docker secrets</a>.</li>
+<li>And did you ever write a commit message &#8220;remove password&#8221;? You&#8217;re not alone.Don&#8217;t use it again, it might be a <a href="https://github.com/search?utf8=%E2%9C%93&amp;q=remove+password&amp;type=Commits&amp;ref=searchresults" target="_blank">public repository</a>.</li>
+</ul>
+<h3>Security updates</h3>
+<p>These friends of Rails saw securityupdates last week:</p>
+<ul>
+<li><a href="https://jenkins.io/blog/2017/02/01/security-updates/" target="_blank">Jenkins</a> released new versions after fixing several security issues, including a high one.</li>
+</ul>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/02/20/safer-debugging-postmortem-security-reading-list.html">Safer debugging, postmortem and security reading list ?#22</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">643</post-id> </item>
+    <item>
+    <title>Web application and Rails security reading list #21</title>
+    <link>https://rorsecurity.info/journal/2017/02/03/web-application-rails-security-reading-list-21.html</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Fri, 03 Feb 2017 14:33:19 +0000</pubDate>
+        <category><![CDATA[Updates]]></category>
+    <guid isPermaLink="false">https://rorsecurity.info/?p=637</guid>
+
+          <description><![CDATA[<p>Oh this,„… is the closest I&#8217;ve ever come to falling for a Gmail phishing attack.“, shows a realclever attack. An embedded fakeattachmentimage sends you to a data:text/html address. The first part of it then isa plausible-looking Google URL. And only after lots of spaces, it actually loads the phishing site in an iframe. A lot &#8230;</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/02/03/web-application-rails-security-reading-list-21.html">Web application and Rails security reading list #21</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<h4></h4>
+<div>
+<div>Oh <a href="https://twitter.com/tomscott/status/812265182646927361">this</a>,„… is the closest I&#8217;ve ever come to falling for a Gmail phishing attack.“, shows a realclever attack. An embedded fakeattachmentimage sends you to a data:text/html address. The first part of it then isa plausible-looking Google URL. And only after lots of spaces, it actually loads the phishing site in an iframe. A lot to watch out for in 2017. Including this:</div>
+</div>
+<div></div>
+<h4><a href="https://blog.elpassion.com/simple-and-terrifying-encryption-story-c1f1d6707c07" target="_blank">A short story about how encryption can go very wrong with a (Ruby) workflow we&#8217;re all guilty of using.</a></h4>
+<hr />
+<div><a style="font-family: inherit; font-size: 18px; font-weight: 600; background-color: #ffffff;" href="https://blog.phusion.nl/2017/01/10/passenger-5-1-1/" target="_blank">Automatic security update checks in the new Phusion Passenger</a></div>
+<div>
+<hr />
+</div>
+<h4><a href="https://githubengineering.com/githubs-post-csp-journey/" target="_blank">The ongoing Content-Security-Policy journey at Github.</a></h4>
+<p>This time focusing on images and dangling markup. That’s when an attacker injects an &lt;img&gt; tag without closing it to extract the HTML of the rest of the page.</p>
+<div>
+<hr />
+</div>
+<h4><a href="https://githubengineering.com/recover-accounts-elsewhere/" target="_blank">A new two-factor authentication lockout recovery process at Github: Using Facebook</a></h4>
+<div>
+<hr />
+</div>
+<h4><a href="https://ipv.sx/telemetry/general-v2.html?channels=release&amp;measure=HTTP_PAGELOAD_IS_SSL&amp;target=1&amp;absolute=0&amp;relative=1" target="_blank">The HTTPS-traffic via Firefox is now over 50% for the first time</a></h4>
+<div>
+<hr />
+</div>
+<h4>There are now „Not Secure“ warnings for insecure pages with password and credit card input fields <a href="https://developers.google.com/web/updates/2016/10/avoid-not-secure-warn" target="_blank">in Chrome</a> and <a href="https://www.mozilla.org/en-US/firefox/51.0/releasenotes/" target="_blank">Firefox 51.</a></h4>
+<div>
+<hr />
+</div>
+<h4><a href="https://wiki.mozilla.org/Security/CloudSec#Security_Checklist" target="_blank">Mozilla’s coding and security checklist for their services</a></h4>
+<div>
+<hr />
+</div>
+<h4><a href="https://blog.bugcrowd.com/mongodb-elasticsearch-ransom-attack" target="_blank">Ransom attacks turn to web apps, check your MongoDB, Elasticsearch, Redis, Cassandra, Hadoop</a></h4>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/02/03/web-application-rails-security-reading-list-21.html">Web application and Rails security reading list #21</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">637</post-id> </item>
+    <item>
+    <title>Rails security reading list, vulnerabilities and browser news (? edition)</title>
+    <link>https://rorsecurity.info/journal/2017/01/13/rails-security-reading-list-vulnerabilities-and-browser-news-20th-edition.html</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Fri, 13 Jan 2017 10:35:46 +0000</pubDate>
+        <category><![CDATA[Updates]]></category>
+    <guid isPermaLink="false">https://rorsecurity.info/?p=629</guid>
+
+          <description><![CDATA[<p>Welcome! Also in 2017 we want to find the right mix of security information, vulnerabilities in Rails&#8217; friends and browser news. Let&#8217;s see what was interesting this week: Several &#8216;exotic&#8217; securityHTTP headers tested Saves you some time to try out all configuration options. Invisible Captcha: Spam protection gem It&#8217;sbased on the honeypot strategy. Thatmeans you &#8230;</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/01/13/rails-security-reading-list-vulnerabilities-and-browser-news-20th-edition.html">Rails security reading list, vulnerabilities and browser news (? edition)</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<p>Welcome! Also in 2017 we want to find the right mix of security information, vulnerabilities in Rails&#8217; friends and browser news. Let&#8217;s see what was interesting this week:</p>
+<h4><a href="https://peteris.rocks/blog/exotic-http-headers/" target="_blank">Several &#8216;exotic&#8217; securityHTTP headers tested</a></h4>
+<div>
+<div>Saves you some time to try out all configuration options.</div>
+<hr />
+<h4><a href="https://github.com/markets/invisible_captcha" target="_blank">Invisible Captcha: Spam protection gem</a></h4>
+<div>It&#8217;sbased on the honeypot strategy. Thatmeans you know it&#8217;s a spam bot if the invisible field is filled out.</div>
+<hr />
+<h4><a href="https://github.com/eliotsykes/rails-security-checklist" target="_blank">Another Rails security checklist</a></h4>
+<hr />
+<h4><a href="https://www.sourceclear.com/blog/rails_admin-vulnerability-disclosure/" target="_blank">CSRFvulnerability in rails_admin gem</a></h4>
+</div>
+<hr />
+<h4><a href="https://www.darknet.org.uk/2016/12/sslscan-detect-ssl-versions-cipher-suites-including-tls/" target="_blank">Tool todetect TLS/SSLvulnerabilities and versions</a></h4>
+<div>This is probably only useful if you can’t use the <a href="https://www.ssllabs.com/ssltest/" target="_blank">Qualys SSL Server Test</a>.For example in a restricted environment.</div>
+<hr />
+<h4><a href="https://snyk.io/blog/differences-in-version-handling-gems-and-npm/" target="_blank">Version handling differencesbetween RubyGems and npm</a></h4>
+<div>If you’re using both Node and Ruby, you might find this guide interesting.</div>
+<hr />
+<h4><a href="https://www.chromestatus.com/feature/5635811978510336" target="_blank">NewContent-Security-Policy (CSP) directive require-sri-forcoming to Chrome</a></h4>
+<div>Subresource Integrity (SRI) is amechanism by which user agents may verify that fetched scripts/styles have been delivered without manipulation. This CSP directive allows developers to require SRI for certain types of resources.</div>
+<hr />
+<h4><b>Important security updates</b></h4>
+<div><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6520" target="_blank">[ImageMagick] Criticalbuffer overflowvulnerabilitybefore version7.0.2-7.</a><br />
+There were also several memoryproblems in the versionsbefore.</div>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2017/01/13/rails-security-reading-list-vulnerabilities-and-browser-news-20th-edition.html">Rails security reading list, vulnerabilities and browser news (? edition)</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">629</post-id> </item>
+    <item>
+    <title>(Rails) security reading list and updates #19</title>
+    <link>https://rorsecurity.info/journal/2016/11/21/rails-security-reading-list-updates-19.html</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Mon, 21 Nov 2016 14:37:15 +0000</pubDate>
+        <category><![CDATA[Updates]]></category>
+    <guid isPermaLink="false">https://rorsecurity.info/?p=620</guid>
+
+          <description><![CDATA[<p>This issue includes for the first time important security updates for Rails&#8217; friends. I&#8217;ll include products that we use alongside Rails, for example nginx, Mysql, Redis. Products that have an automatic updater aren&#8217;t worth mentioning. Let&#8217;s get started with this weeks interesting (Rails) security articles: Distrusting New WoSign and StartCom Certificates Email Security &#8211; SPF &#8230;</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2016/11/21/rails-security-reading-list-updates-19.html">(Rails) security reading list and updates #19</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<div class="" data-block="true" data-editor="5l0u3" data-offset-key="4m009-0-0">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr" data-offset-key="4m009-0-0">This issue includes for the first time important security updates for Rails&#8217; friends. I&#8217;ll include products that we use alongside Rails, for example nginx, Mysql, Redis. Products that have an automatic updater aren&#8217;t worth mentioning. Let&#8217;s get started with this weeks interesting (Rails) security articles:</div>
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr" data-offset-key="4m009-0-0"></div>
+</div>
+<h4><a href="https://blog.mozilla.org/security/2016/10/24/distrusting-new-wosign-and-startcom-certificates/" target="_blank">Distrusting New WoSign and StartCom Certificates</a></h4>
+<hr />
+<h4><a href="https://scotthelme.co.uk/email-security-spf/" target="_blank">Email Security &#8211; SPF</a></h4>
+<hr />
+<h4><a href="https://gorails.com/episodes/protecting-from-xss-with-sanitize" target="_blank">Protecting from XSS with Rails&#8217; sanitize()</a></h4>
+<div>A video introduction to Rails&#8217; sanitize(). While you might already know it, he also looks at how it’s useful against Javascript links in user profiles.</div>
+<div>
+<hr />
+</div>
+<h4><a href="https://www.driftingruby.com/episodes/rails-api-throttling-with-rack-attack" target="_blank">Rails API &#8211; throttling with Rack::Attack</a></h4>
+<div>An introduction to Rack::Attack and how to throttle requests.</div>
+<hr />
+<h4><a href="https://www.techrepublic.com/article/how-to-quickly-audit-a-linux-system-from-the-command-line/" target="_blank">How to quickly audit a Linux system from the command line</a></h4>
+<div>
+<hr />
+</div>
+<h4><a href="https://www.smashingmagazine.com/be-afraid-of-public-key-pinning/" target="_blank">Be afraid of HTTP Public Key Pinning (HPKP)</a></h4>
+<div>Http Public Key Pinning went wrong for a major site.</div>
+<div>
+<hr />
+</div>
+<h4><a href="https://blog.mozilla.org/security/2016/11/10/enforcing-content-security-by-default-within-firefox/" target="_blank">Enforcing content security by default within Firefox</a></h4>
+<div>If you’re interested in the security internals of browsers, this will be for you. So this is how Firefox now centralizes all content security checks.</div>
+<div>
+<hr />
+</div>
+<h4><a href="https://observatory.mozilla.org/" target="_blank">Observatory by Mozilla</a></h4>
+<div>A central place for all kinds of security checks: TLS, HTTP security headers, HSTS configuration.</div>
+<h3>Important security updates</h3>
+<div></div>
+<h4><a href="https://about.gitlab.com/blog/" target="_blank">[Gitlab] There were several important security update in the past for Gitlab.</a></h4>
+<div>
+<hr />
+</div>
+<h4><a href="https://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html" target="_blank">[Mysql] Several critical security updates in a massive &#8220;Oracle Critical Patch Update Advisory&#8221;</a></h4>
+<div>
+<hr />
+</div>
+<h4><a href="https://blog.talosintel.com/2016/10/memcached-vulnerabilities.html" target="_blank">[Memcached] Very critical vulnerabilities that allow for remote code execution</a></h4>
+<div></div>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2016/11/21/rails-security-reading-list-updates-19.html">(Rails) security reading list and updates #19</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">620</post-id> </item>
+    <item>
+    <title>? Rails security update #18</title>
+    <link>https://rorsecurity.info/journal/2016/10/25/rails-security-update-18.html</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Tue, 25 Oct 2016 11:10:54 +0000</pubDate>
+        <category><![CDATA[Updates]]></category>
+    <guid isPermaLink="false">https://rorsecurity.info/?p=613</guid>
+
+          <description><![CDATA[<p>Did you see the Bundlervulnerability recently? It seems Bundler switches to a different source every time it sees a new one in a Gemfile. Even if that source was only for one gem. So Bundler might load gems from unexpected sources. You’ve got that source in your Gemfile, so you already trust it to some &#8230;</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2016/10/25/rails-security-update-18.html">? Rails security update #18</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<div>
+<div>
+<div>Did you see the <a href="https://collectiveidea.com/blog/archives/2016/10/06/bundlers-multiple-source-security-vulnerability/" target="_blank">Bundlervulnerability</a> recently? It seems Bundler switches to a different source every time it sees a new one in a Gemfile. Even if that source was only for one gem. So Bundler might load gems from unexpected sources. You’ve got that source in your Gemfile, so you already trust it to some extent. But we shouldprobablyusetheseveralsourceblocksasdescribedinthe <a href="https://collectiveidea.com/blog/archives/2016/10/06/bundlers-multiple-source-security-vulnerability/" target="_blank">original blog post</a>. And now forsomething completely different:</div>
+<div></div>
+</div>
+</div>
+<div>
+<hr />
+</div>
+<h4><a href="https://blog.portswigger.net/2016/10/exploiting-cors-misconfigurations-for.html" target="_blank">Exploiting CORS Misconfigurations for Bitcoins and Bounties</a></h4>
+<div>Some Cross-Origin Resource Sharing (CORS) misconfiguration misconceptions</div>
+<div>
+<hr />
+</div>
+<h4><a href="https://robots.thoughtbot.com/is-your-site-leaking-password-reset-links" target="_blank">Is Your Site Leaking Password Reset Links?</a></h4>
+<div>Password Reset URLs may be leaked to third-party tools via the <code>Referer</code> header. Fix this on your site if you care about a second layer of defense.</div>
+<div>
+<hr />
+</div>
+<h4><a href="https://chrome.google.com/webstore/detail/csp-mitigator/gijlobangojajlbodabkpjpheeeokhfa" target="_blank">CSP Mitigator</a></h4>
+<div>A Content-Security-Policy test tool to come up with the best policy in the first place. By Google.</div>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2016/10/25/rails-security-update-18.html">? Rails security update #18</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">613</post-id> </item>
+    <item>
+    <title>Rails and web security digest #17</title>
+    <link>https://rorsecurity.info/journal/2016/09/29/rails-web-security-digest-17.html</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Thu, 29 Sep 2016 14:32:50 +0000</pubDate>
+        <category><![CDATA[Updates]]></category>
+    <guid isPermaLink="false">https://rorsecurity.info/?p=606</guid>
+
+          <description><![CDATA[<p>Since Let’s Encrypt started, the adaption of HTTPS picked up speed. In Firefox the percentage of HTTPS page loads is now at 42%. Browsers also campaign for it. More &#38; more of them mark forms with sensitive information as insecure. More about this in today&#8217;s interesting security news: Ruby method and class injection Injecting Ruby &#8230;</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2016/09/29/rails-web-security-digest-17.html">Rails and web security digest #17</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<p>Since Let’s Encrypt started, the adaption of HTTPS picked up speed. In Firefox the percentage of HTTPS page loads is now at 42%. Browsers also campaign for it. More &amp; more of them mark forms with sensitive information as insecure. More about this in today&#8217;s interesting security news:</p>
+<h4><a href="https://rorsecurity.info/portfolio/ruby-method-class-injection" target="_blank">Ruby method and class injection</a></h4>
+<div>Injecting Ruby method and class names. This is a pretty frequent „guest“ in my security code audits, so I wrote about it.</div>
+<div>
+<hr />
+</div>
+<h4><a href="https://blog.qualys.com/ssllabs/2016/09/06/is-http-public-key-pinning-dead" target="_blank">Is HTTP Public Key Pinning dead?</a></h4>
+<div>Opinion by Ivan Ristić about HTTP Public Key Pinning (HPKP) being too complicated and dangerous to implement.</div>
+<div>
+<hr />
+</div>
+<h4><a href="https://hynek.me/articles/storing-passwords/" target="_blank">Storing Passwords in a Highly Parallelized World</a></h4>
+<div>As password cracking methods get faster &amp; faster, it might be time to move from bcrypt to Argon2. <a href="https://github.com/technion/ruby-argon2" target="_blank">Ruby gem</a>.</div>
+<div>
+<hr />
+</div>
+<h4><a href="https://www.driftingruby.com/episodes/authorization-with-pundit" target="_blank">Authorization with Pundit</a></h4>
+<div>
+<hr />
+</div>
+<h4></h4>
+<h4><a href="https://security.googleblog.com/2016/09/reshaping-web-defenses-with-strict.html" target="_blank">Reshaping web defenses with strict Content Security Policy</a></h4>
+<div>Interesting new tools and research about Content-Security-Policy</div>
+<div>
+<hr />
+</div>
+<h4><a href="https://www.percona.com/blog/2016/09/12/database-affected-cve-2016-6662/" target="_blank">Is your database affected by CVE-2016-6662?</a></h4>
+<div>Are you affected by the latest MySQL critical vulnerability?</div>
+<div>
+<hr />
+</div>
+<h4><a href="https://www.driftingruby.com/episodes/two-factor-authentication" target="_blank">Two Factor Authentication</a></h4>
+<div>Screencast on how to add 2FA to your application</div>
+<div>
+<hr />
+</div>
+<h4><a href="https://security.googleblog.com/2016/09/moving-towards-more-secure-web.html" target="_blank">Moving towards a more secure web</a></h4>
+<div>Also Chrome will mark login screens as insecure if served over plain HTTP.</div>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/journal/2016/09/29/rails-web-security-digest-17.html">Rails and web security digest #17</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">606</post-id> </item>
+  </channel>
+</rss>

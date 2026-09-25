@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+  xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+  >
+
+<channel>
+  <title>Projects Archive - Ruby on Rails Security Project</title>
+  <atom:link href="https://rorsecurity.info/portfolio/feed" rel="self" type="application/rss+xml" />
+  <link>https://rorsecurity.info/portfolio</link>
+  <description>Hand-picked Rails security resources</description>
+  <lastBuildDate>Fri, 09 Feb 2024 08:37:11 +0000</lastBuildDate>
+  <language>en-US</language>
+  <sy:updatePeriod>
+  hourly  </sy:updatePeriod>
+  <sy:updateFrequency>
+  1 </sy:updateFrequency>
+  <generator>https://wordpress.org/?v=7.0.4</generator>
+
+<image>
+  <url>https://rorsecurity.info/wp-content/uploads/2015/07/favicon512_bigger-55b0b104v1_site_icon-32x32.png</url>
+  <title>Projects Archive - Ruby on Rails Security Project</title>
+  <link>https://rorsecurity.info/portfolio</link>
+  <width>32</width>
+  <height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">97667207</site>  <item>
+    <title>Ruby method and class injection</title>
+    <link>https://rorsecurity.info/portfolio/ruby-method-class-injection</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Tue, 06 Sep 2016 08:02:06 +0000</pubDate>
+        <guid isPermaLink="false">https://rorsecurity.info/?post_type=jetpack-portfolio&#038;p=568</guid>
+
+          <description><![CDATA[<p>A class name in user input: Anything can happen.</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/ruby-method-class-injection">Ruby method and class injection</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<p><span style="font-weight: 400;">When dealing with user input, or when deserializing class&nbsp;names&nbsp;from user input, for example</span></p>
+<p><code><span style="font-weight: 400;">model = params[:type].camelize.constantize<br />
+</span></code><code><span style="font-weight: 400;">item = model.find(params[:id])</span></code></p>
+<p><span style="font-weight: 400;">A user could provide an arbitrary model&nbsp;name in&nbsp;<code>params[:type]</code>&nbsp;and thus find an object&nbsp;in a different model than expected. Now, there might be other code that will fail if the item doesn&#8217;t respond to a certain attribute name.&nbsp;But in some cases, Rails&nbsp;will show something that this user is&nbsp;not allowed&nbsp;to see. If the code continued like this, it could also update the item:</span></p>
+<p><code>item.update_attribute(:state, params[:state])</code></p>
+<h2><b>What can I do against it?</b></h2>
+<p><span style="font-weight: 400;">When dealing with user-provided class names (and <a href="https://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-constantize">constantize</a>), it’s best to use a whitelist of possible inputs rather than trusting the user. I know, your intention wasn&#8217;t to trust the user input, but just take out a bit of repetition.&nbsp;Let&#8217;s add a whitelist check and we&#8217;ve got the Ruby class injection problem covered:</span></p>
+<p><code><span style="font-weight: 400;">if ['user', 'account'].include?(params[:type])<br />
+</span></code></p>
+<p><code><span style="font-weight: 400;">&nbsp; &nbsp;model = params[:type].camelize.constantize<br />
+</span></code></p>
+<p><code><span style="font-weight: 400;">&nbsp; &nbsp;item = model.find(params[:id])<br />
+</span></code></p>
+<p><code><span style="font-weight: 400;">end</span></code></p>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/ruby-method-class-injection">Ruby method and class injection</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">568</post-id> </item>
+    <item>
+    <title>Excel Injection via Rails downloads</title>
+    <link>https://rorsecurity.info/portfolio/excel-injection-via-rails-downloads</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Fri, 02 Sep 2016 13:56:54 +0000</pubDate>
+        <guid isPermaLink="false">https://rorsecurity.info/?post_type=jetpack-portfolio&#038;p=569</guid>
+
+          <description><![CDATA[<p>A = in a name could make Excel run macros.</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/excel-injection-via-rails-downloads">Excel Injection via Rails downloads</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<h2><b>What Is Excel Injection?</b></h2>
+<p><span style="font-weight: 400;"><a href="https://www.owasp.org/index.php/CSV_Excel_Macro_Injection">Excel injection</a> occurs when a CSV or Excel file is crafted to contain control characters in a cell which run a command when the file is opened. When a cell starts with =, +, or &#8211; in a string field, Excel can be made to launch executable files or visit a webpage. As an example, putting the <code>string =cmd|' /C calc'!A0</code> will launch the calculator app on Windows when the sheet is opened and the user confirms to trust the source of the file.</span></p>
+<h2><b>What are the risks?</b></h2>
+<p><span style="font-weight: 400;">Through injection, Excel can be made to open arbitrary programs or visit malicious URLs. A warning does pop up telling the user about the risks, but it may be ignored because it asks whether you trust the source of the file.</span></p>
+<h2><b>How can I prevent it?</b></h2>
+<p><span style="font-weight: 400;">To prevent injection attacks, you need to sanitize the inputs. Make sure any Excel special characters at the start of a cell are escaped using a single <code>'</code>&nbsp;quotation mark (so e.g. <code>=</code> becomes <code>'=</code>).</span></p>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/excel-injection-via-rails-downloads">Excel Injection via Rails downloads</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">569</post-id> </item>
+    <item>
+    <title>Rails SQL Injection with LIKE</title>
+    <link>https://rorsecurity.info/portfolio/rails-sql-injection-like</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Thu, 01 Sep 2016 08:04:16 +0000</pubDate>
+        <guid isPermaLink="false">https://rorsecurity.info/?post_type=jetpack-portfolio&#038;p=560</guid>
+
+          <description><![CDATA[<p>Injection with % in SQL LIKE is common and may lead to long queries.</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/rails-sql-injection-like">Rails SQL Injection with LIKE</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<p>SQL ‘LIKE’ injection is a form of denial-of-service attack where an end-user adds wildcards to a SQL query that uses the ‘LIKE’ keyword.This greatly increases the time it takes to run the query. If your Rails application allows user searching using email:</p>
+<p><code><span style="font-weight: 400;">users = User.includes(:profile).where("profiles.email LIKE ?", "#{term}%“).all</span></code></p>
+<p><span style="font-weight: 400;">A user can include percent signs in their search and vastly increase the query duration, slowing down the database.</span></p>
+<h2><b>What are the risks?</b></h2>
+<p><span style="font-weight: 400;">Because the attack causes database queries to skip the index and run slower, the main risk is a denial-of-service attack. Many searches could bog down the database.</span></p>
+<h2><b>Countermeasures in Rails</b></h2>
+<p><span style="font-weight: 400;">Sanitizing user input is the best way to prevent injection. For Rails version 4.2 or greater, ActiveRecord has a new helper function,</span><a href="https://api.rubyonrails.org/classes/ActiveRecord/Sanitization/ClassMethods.html#method-i-sanitize_sql_like" target="_blank"> <span style="font-weight: 400;">sanitize_sql_like</span></a><span style="font-weight: 400;">, which escapes out the percent signs (and the _ character).</span></p>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/rails-sql-injection-like">Rails SQL Injection with LIKE</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">560</post-id> </item>
+    <item>
+    <title>CSS Injection in Rails</title>
+    <link>https://rorsecurity.info/portfolio/css-injection-rails</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Thu, 01 Sep 2016 07:54:36 +0000</pubDate>
+        <guid isPermaLink="false">https://rorsecurity.info/?post_type=jetpack-portfolio&#038;p=559</guid>
+
+          <description><![CDATA[<p>Can CSS from the user do any harm?</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/css-injection-rails">CSS Injection in Rails</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<p>CSS Injection happens when a malicious party is able to alter your webpage by making use of user-defined styles. If your Rails&nbsp;application allows users to define a color which is then served back through CSS using a view:</p>
+<p><code><span style="font-weight: 400;">&lt;div style="background: &lt;%= user.background_color %&gt;;"&gt;</span></code></p>
+<p><span style="font-weight: 400;">Then a user could supply a value which alters the page layout or content.</span></p>
+<h2><b>What are the risks?</b></h2>
+<p><span style="font-weight: 400;">A major risk of CSS injection is abuse of the </span><a href="https://css-tricks.com/css-content/" target="_blank" rel="noopener"><span style="font-weight: 400;">content directive </span></a><span style="font-weight: 400;">to rewrite a page’s content. Additionally, if a user is able to edit the style of forms seen by others, they could trick those users into putting personal data in the public.</span></p>
+<h2><b>How can I prevent CSS Injection?</b></h2>
+<p><span style="font-weight: 400;">The easiest way to prevent injection attacks is to validate user-provided values. Instead of giving end users the ability to set their own values, you can also give users a pre-defined list which you’ve already validated.</span></p>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/css-injection-rails">CSS Injection in Rails</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">559</post-id> </item>
+    <item>
+    <title>A Content Security Policy (CSP) strategy</title>
+    <link>https://rorsecurity.info/portfolio/content-security-policy-csp-strategy</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Fri, 20 May 2016 10:23:07 +0000</pubDate>
+        <guid isPermaLink="false">https://rorsecurity.info/?post_type=jetpack-portfolio&#038;p=512</guid>
+
+          <description><![CDATA[<p>CSP is a great way to reduce or completely remove the number 1 web app security vulnerability – Cross-Site Scripting (XSS).</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/content-security-policy-csp-strategy">A Content Security Policy (CSP) strategy</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<div><img decoding="async" class="alignleft size-medium wp-image-516" src="https://rorsecurity.info/wp-content/uploads/2016/05/rails_content_security_policy_smaller-300x141.jpg" alt="Rails Content Security Policy" width="300" height="141" srcset="https://rorsecurity.info/wp-content/uploads/2016/05/rails_content_security_policy_smaller-300x141.jpg 300w, https://rorsecurity.info/wp-content/uploads/2016/05/rails_content_security_policy_smaller-768x362.jpg 768w, https://rorsecurity.info/wp-content/uploads/2016/05/rails_content_security_policy_smaller-48x23.jpg 48w, https://rorsecurity.info/wp-content/uploads/2016/05/rails_content_security_policy_smaller.jpg 928w" sizes="(max-width: 300px) 100vw, 300px" />A Content Security Policy comes in the form of an HTTP header and declares rules for what sources are allowed for all sorts of assets. In consequence, everything else is disallowed. If implemented well, it will completely wipe out all Cross-Site-Scripting (XSS) vulnerabilities in your app. Why? Because CSP effectively disallows inline JavaScript and CSS.</div>
+<div>
+<p>The&nbsp;header&nbsp;will&nbsp;look&nbsp;as&nbsp;follows&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;allow&nbsp;scripts&nbsp;(script-src)&nbsp;only&nbsp;in&nbsp;external&nbsp;files&nbsp;from&nbsp;the&nbsp;same&nbsp;origin&nbsp;(’self&#8217;):</p>
+</div>
+<div>
+<div>&nbsp;</div>
+<pre>Content-Security-Policy:&nbsp;script-src 'self';</pre>
+<div>The <code>script-src</code> part is a so-called directive, the following is its’ value. Every policy is separated by a semicolon. The 3 most important directives are:</div>
+<div>&nbsp;</div>
+<ul>
+<li><code>script-src</code>: Allowed origins for scripts.</li>
+<li><code>style-src</code>:&nbsp;Allowed&nbsp;sources&nbsp;for CSS.</li>
+<li><code>default-src</code>:&nbsp;The&nbsp;fallback&nbsp;source&nbsp;for&nbsp;basically&nbsp;all&nbsp;source&nbsp;directives&nbsp;(*-src)&nbsp;if&nbsp;the&nbsp;specific&nbsp;source&nbsp;isn’t&nbsp;defined.</li>
+</ul>
+<div>&nbsp;</div>
+<div>As the standard evolves, it looks like this header will be used for all kinds of&nbsp;<a href="https://www.w3.org/TR/CSP3/#directives-elsewhere" target="_blank" rel="noopener">security-related policies</a>&nbsp;in the future:</div>
+<ul>
+<li><code>block-all-mixed-content</code>: Don’t load resources over HTTP if this is HTTPS</li>
+<li><code>upgrade-insecure-requests</code>: Use&nbsp;HTTPS if the&nbsp;HTTP version of a resource was requested</li>
+</ul>
+<div>&nbsp;</div>
+<div>Reference:</div>
+<ul>
+<li><a href="https://bauland42.com/ruby-on-rails-content-security-policy-csp/#directives" target="_blank" rel="noopener">A list of all important directives</a></li>
+<li><a href="https://bauland42.com/ruby-on-rails-content-security-policy-csp/#values" target="_blank" rel="noopener">And the directive values</a></li>
+</ul>
+<div>&nbsp;</div>
+<h2>Support rate</h2>
+<div>The Content Security Policy is supported by over <a href="https://caniuse.com/#search=Content%20Security%20Policy" target="_blank" rel="noopener">80%</a> of today’s browsers.&nbsp;So it seems like a very good time to get started with a&nbsp;Content-Security-Policy to adapt your Rails application to the future.</div>
+<div>&nbsp;</div>
+<h2>The Content Security Policy header field</h2>
+<div>The former X-Content-Security-Policy&nbsp;and&nbsp;X-Webkit-CSP&nbsp;HTTP&nbsp;headers are now deprecated. Going forwards you should only use the&nbsp;Content-Security-Policy header. It’s currently supported by over <a href="https://caniuse.com/#search=Content%20Security%20Policy" target="_blank" rel="noopener">80%</a> of today’s browser. Most of the directives were mentioned already in version 1 of the standard (80% browser support). <a href="https://www.w3.org/TR/CSP/" target="_blank" rel="noopener">Version 2</a>&nbsp;added a few features, but they aren’t supported by all browsers, yet.</div>
+<div>&nbsp;</div>
+<h2>Rails configuration recommendation</h2>
+<div>Adding an HTTP header in Rails is straightforward. But it’s recommended to use the <a href="https://github.com/twitter/secureheaders" target="_blank" rel="noopener">SecureHeaders</a>&nbsp;gem&nbsp;because it includes a feature to recognize the client’s user agent and send only the supported directives. If the browser doesn’t support CSP at all, the header won’t be sent. It wouldn’t do any harm to send it, but you will save a few bytes then.</div>
+<div>&nbsp;</div>
+<h2>Introduction strategy for a&nbsp;Content-Security-Policy</h2>
+<div>For applications slightly larger than a &#8220;Hello world“ application, you’ll need a strategy how to introduce this policy. Usually, there will be 2 parts:</div>
+<ul>
+<li>Move all scripts and styles to external scripts and decouple scripts and markup completely (also in Ajax responses)</li>
+<li>Start with a policy and use the introductory Content-Security-Policy-Report-Only header to receive violation reports at an endpoint and not block anything, yet. Then tweak the policy and slowly move to the real header</li>
+</ul>
+<div>&nbsp;</div>
+<h2>A CSP configuration to start with</h2>
+<div>You can use this basic <a href="https://github.com/twitter/secureheaders" target="_blank" rel="noopener">SecureHeaders</a> configuration in the beginning to send the&nbsp;Content-Security-Policy-Report-Only header and to allow scripts and styles only from the <a href="https://en.wikipedia.org/wiki/Same-origin_policy" target="_blank" rel="noopener">same origin</a>.</div>
+<p>&nbsp;</p>
+</div>
+<div>
+<div>config/initializers/csp.rb:</div>
+<pre>SecureHeaders::Configuration.default&nbsp;do&nbsp;|config|
+&nbsp; config.csp&nbsp;=&nbsp;{
+&nbsp; &nbsp; report_only:&nbsp;Rails.env.production?,&nbsp;#&nbsp;for the&nbsp;Content-Security-Policy-Report-Only header
+&nbsp; &nbsp; preserve_schemes:&nbsp;true,&nbsp;#&nbsp;default:&nbsp;false.
+
+&nbsp; &nbsp; default_src:&nbsp;%w(*),&nbsp;#&nbsp;all&nbsp;allowed&nbsp;in&nbsp;the&nbsp;beginning
+&nbsp; &nbsp; script_src:&nbsp;%w('self‘), # scripts only allowed in external files from the same origin
+&nbsp; &nbsp; connect_src:&nbsp;%w('self‘), # Ajax may connect only to the same origin
+&nbsp; &nbsp; style_src:&nbsp;%w('self'&nbsp;'unsafe-inline‘), # styles only allowed in external files from the same origin and in style attributes (for now)
+&nbsp; &nbsp; report_uri:&nbsp;["/csp_report?report_only=#{Rails.env.production?}“] # violation reports will be sent here
+&nbsp; }
+end</pre>
+<div>&nbsp;</div>
+<div>By&nbsp;the&nbsp;way,&nbsp;there’s&nbsp;no&nbsp;inheritance&nbsp;from&nbsp;the&nbsp;default&nbsp;source&nbsp;to&nbsp;the&nbsp;other&nbsp;source&nbsp;directives.&nbsp;I.e.&nbsp;script-src&nbsp;doesn’t&nbsp;inherit&nbsp;*&nbsp;from&nbsp;default-src&nbsp;in&nbsp;the&nbsp;example&nbsp;above.</div>
+<div>&nbsp;</div>
+<h2>A candidate default Rails&nbsp;Content Security Policy</h2>
+<div>Getting a general CSP for the masses right is complicated. This Rails <a href="https://github.com/rails/rails/pull/24961/files" target="_blank" rel="noopener">pull request</a>&nbsp;tries to do that, so let’s compare what’s different to the one&nbsp;above:</div>
+<div>&nbsp;</div>
+<pre>...
+&nbsp; &nbsp; default_src:&nbsp;%w('self'&nbsp;https:),&nbsp;#&nbsp;the fallback is everything from the same origin and every HTTPS URL
+&nbsp; &nbsp; script_src:&nbsp;%w('self'&nbsp;https:), # see above
+&nbsp; &nbsp; font_src:&nbsp;%w('self'&nbsp;https:&nbsp;data:), # see above + <a href="https://en.wikipedia.org/wiki/Data_URI_scheme" target="_blank" rel="noopener">data: resources</a>
+&nbsp; &nbsp; img_src:&nbsp;%w('self'&nbsp;https:&nbsp;data:), # see above
+&nbsp; &nbsp; object_src:&nbsp;%w('none'), # no embedding
+&nbsp; &nbsp; style_src:&nbsp;%w('self'&nbsp;https:&nbsp;'unsafe-inline'), # basically only styles from HTTP URLs or data: sources are disallowed
+...</pre>
+<div>&nbsp;</div>
+<div>What’s different? Much less is allowed by default, but that’s&nbsp;because this one is targeted&nbsp; at new applications. The one above is rather for seasoned applications. Many sources allow every HTTPS source, that’s pretty general, but a good starting point. I’d recommend investigating all exact source URLs and list only those if you can.</div>
+<div>&nbsp;</div>
+<h2>Violation reports</h2>
+<div>The first example included a report-uri directive which instructs the browser to POST JSON violation reports to that endpoint. See here for an <a href="https://bauland42.com/ruby-on-rails-content-security-policy-csp/#reports" target="_blank" rel="noopener">example migration and controller</a> in Rails. Go through the violation reports regularly to enhance the policy (or filter false positives).</div>
+<div>&nbsp;</div>
+<div>However, take good caution with the endpoint and the reports. An attacker might forge a report to make you visit a certain site from the report or to run a DoS attack. You might want to require the user to be logged in and&nbsp;<a href="https://rorsecurity.info/portfolio/rackattack-rate-limits-against-ddos-and-abusive-users" target="_blank" rel="noopener">rate-limit</a>&nbsp;the controller.</div>
+<div>&nbsp;</div>
+<h2>Are you using scripts from CDNs?</h2>
+<div>If you’re using CloudFlare, MaxCDN, Google’s or any other Content Delivery Network, you’ll have to add that URL to the allowed script sources. For example for jQuery from Google’s CDN add&nbsp;https://ajax.googleapis.com:</div>
+<div>&nbsp;</div>
+<div><code>script_src:&nbsp;%w('self' https://ajax.googleapis.com)</code></div>
+<div>&nbsp;</div>
+<h2>Your JavaScript file organization</h2>
+<div>There are endless possibilities how to organize scripts, for both inline scripts (in the HTML), but also in external files:</div>
+<ul>
+<li>Include&nbsp;scripts&nbsp;and&nbsp;variable&nbsp;data&nbsp;in&nbsp;*.html.erb&nbsp;files&nbsp;(or&nbsp;into&nbsp;HAML,&nbsp;Slim&nbsp;for&nbsp;that&nbsp;matter)</li>
+<li>Include scripts in *.html.erb files, but source variable data through your own JSON API</li>
+<li>Completely divide markup, variable data, and scripts</li>
+<li>Divide&nbsp;it&nbsp;into&nbsp;2&nbsp;groups:&nbsp;Markup&nbsp;+&nbsp;variable&nbsp;data&nbsp;and&nbsp;scripts</li>
+</ul>
+<div>&nbsp;</div>
+<div>The first 2 options won’t be possible for CSP anymore&nbsp;because&nbsp;we’ll need to move all scripts to external files to benefit from this new policy. The&nbsp;third&nbsp;option is great, but it requires very strict planning. In any case, the latter 2 options require that data and scripts are separated, for both normal and Ajax requests.</div>
+<div>&nbsp;</div>
+<div>So where to put scripts if you’ve scripts inline in Erb files right now?</div>
+<ul>
+<li>One script per controller: Add&nbsp;javascript_include_tag&nbsp;controller_name&nbsp;to&nbsp;the layout template and&nbsp;create&nbsp;a&nbsp;script for&nbsp;each&nbsp;controller&nbsp;in&nbsp;app/assets.</li>
+<li>Or create one script for the entire application: This will possibly load a little slower for the very first request, but is much quicker for subsequent requests.</li>
+</ul>
+<div>&nbsp;</div>
+<h2>Move scripts to external files</h2>
+<p>Once you’ve decided for an architecture, you can start moving inline scripts out.</p>
+<div><strong>JavaScript events</strong></div>
+<div>Before:</div>
+<div><code>&lt;button&nbsp;class='my-javascript-button'&nbsp;onclick="alert('hello');"&gt;</code></div>
+<p>&nbsp;</p>
+<div>After (HTML and script part):</div>
+<pre>&lt;button&nbsp;class='my-javascript-button'&gt;
+
+$('.my-javascript-button').on('click',&nbsp;function()&nbsp;{
+&nbsp; alert('hello');
+});</pre>
+<h2>Reusing scripts</h2>
+<div>If you’ve used <a href="https://github.com/rails/jquery-ujs" target="_blank" rel="noopener">Rails&#8217; unobtrusive jQuery adapter</a>&nbsp;before, you know that scripts are especially useful if they can be reused. For example:&nbsp;<code>&lt;a&nbsp;href="/users/5"&nbsp;data-method="delete"&nbsp;rel="nofollow"&nbsp;data-confirm="Are&nbsp;you&nbsp;sure?"&gt;Delete&lt;/a&gt;</code> The script will asynchronously select all links with a&nbsp;data-confirm attribute and show a message box when you click the link. If you can find common functionality in your app, <a href="https://edgeguides.rubyonrails.org/working_with_javascript_in_rails.html#unobtrusive-javascript" target="_blank" rel="noopener">try this approach</a>.</div>
+<div>&nbsp;</div>
+<h2>Ajax scripts</h2>
+<div>If you&#8217;re using *.js.erb Ajax responses, unfortunately, you’ll have to move all those scripts to external files because jQuery uses eval() (an abbreviation for evil) to evaluate the response. This isn’t allowed with a Content-Security-Policy anymore unless you add a <code>script-src 'unsafe-eval'</code>. If you’re not sure how to do that: Make all Ajax responses only return markup/data and run pre-loaded scripts asynchronously on the client side once the Ajax response came back.&nbsp;For example by watching the&nbsp;<a href="https://github.com/rails/jquery-ujs/wiki/ajax" target="_blank" rel="noopener">ajax:success event</a>.</div>
+<div>&nbsp;</div>
+<h2>Get started</h2>
+<div>The first step is to get the <a href="https://github.com/twitter/secureheaders" target="_blank" rel="noopener">SecureHeaders</a> gem.</div>
+</div>
+<div>&nbsp;</div>
+<script src="https://cdn.kit.com/assets/CKJS4.js?v=21" nonce="CmhH9IFFpXggxHSIVHTSbw=="></script>
+<div class="ck_form ck_minimal">
+  <div class="ck_form_fields">
+    <h3 class="ck_form_title">Like this kind of articles?</h3>
+    <div class="ck_description">
+      <p>Subscribe to hear about new Rails security resources first. Only helpful articles and guides. Monthly(ish) updates, no spam.</p>
+    </div>
+
+    <div id="ck_success_msg" style="display:none;">
+      <p>Thanks! Now check your email.</p>
+    </div>
+
+    <!--  Form starts here  -->
+    <form id="ck_subscribe_form" class="ck_subscribe_form" action="https://api.convertkit.com/landing_pages/4553/subscribe" data-remote="true">
+      <input type="hidden" value='{"embed_style":"inline","embed_trigger":"timing","scroll_percentage":"70","delay_seconds":"15","display_position":"br","display_devices":"all","days_no_show":"15","converted_behavior":"show","form_style":"minimal"}' id="ck_form_options">
+      <input type="hidden" name="id" value="4553" id="landing_page_id">
+      <input type="hidden" name="ck_form_recaptcha" value="" id="ck_form_recaptcha">
+      <div class="ck_errorArea">
+        <div id="ck_error_msg" style="display:none">
+          <p>There was an error submitting your subscription. Please try again.</p>
+        </div>
+      </div>
+      <div class="ck_control_group ck_email_field_group">
+        <label class="ck_label" for="ck_emailField" style="display: none">Email Address</label>
+        <input type="email" name="email" class="ck_email_address" id="ck_emailField" placeholder="Email Address" required>
+      </div>
+      <div class="ck_control_group ck_captcha2_h_field_group ck-captcha2-h" style="position: absolute !important;left: -999em !important;">
+        <input type="text" name="captcha2_h" class="ck-captcha2-h" id="ck_captcha2_h" placeholder="We use this field to detect spam bots. If you fill this in, you will be marked as a spammer.">
+      </div>
+
+
+      <button class="subscribe_button ck_subscribe_button btn fields" id="ck_subscribe_button">
+        Join the list
+      </button>
+      <span class="ck_guarantee">
+        Unsubscribe at any time.
+          <a class="ck_powered_by" href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic">Powered by Kit</a>
+      </span>
+    </form>
+  </div>
+
+</div>
+
+
+
+<style type="text/css">/* Layout */
+  .ck_form.ck_minimal {
+  /* divider image */
+  background: #f9f9f9;
+  font-family: 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
+  line-height: 1.5em;
+  overflow: hidden;
+  color: #666;
+  font-size: 16px;
+  border: solid 1px #d1d1d1;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  clear: both;
+  margin: 20px 0px;
+  text-align: center;
+}
+
+
+.ck_form.ck_minimal h3.ck_form_title {
+  text-align: center;
+  margin: 0px 0px 10px;
+  font-size: 28px;
+}
+
+.ck_form.ck_minimal h4 {
+  text-align: center;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: normal;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.ck_form.ck_minimal p {
+  padding: 0px;
+}
+
+.ck_form, .ck_form * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ck_form.ck_minimal .ck_form_fields {
+  width: 100%;
+  float: left;
+  padding: 5%;
+}
+/* Form fields */
+
+.ck_errorArea {
+  display: none; /* temporary */
+}
+
+#ck_success_msg {
+  padding: 10px 10px 0px;
+  border: solid 1px #ddd;
+  background: #eee;
+}
+
+.ck_form.ck_minimal input[type="text"], .ck_form.ck_minimal input[type="email"] {
+  font-size: 18px;
+  padding: 10px 8px;
+  width: 68%;
+  border: 1px solid #d6d6d6; /* stroke */
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px; /* border radius */
+  background-color: #fff; /* layer fill content */
+  margin-bottom: 5px;
+  height: auto;
+  float: left;
+  margin: 0px;
+  margin-right: 2%;
+  height: 42px;
+}
+
+.ck_form input[type="text"]:focus, .ck_form input[type="email"]:focus {
+  outline: none;
+  border-color: #aaa;
+}
+
+.ck_form.ck_minimal .ck_subscribe_button {
+    width: 100%;
+    color: #fff;
+    margin: 0px;
+    padding:  11px 0px;
+    font-size: 18px;
+    background: #bf1e2d;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px; /* border radius */
+    cursor: pointer;
+    border: none;
+    text-shadow: none;
+    width: 30%;
+    float: left;
+    height: 42px;
+  }
+
+
+.ck_form.ck_minimal .ck_guarantee {
+  color: #626262;
+  font-size: 12px;
+  text-align: center;
+  padding: 15px 0px 0px;
+  display: block;
+  clear: both;
+}
+.ck_form .ck_powered_by {
+  display: block;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.ck_form .ck_powered_by:hover {
+  display: block;
+  color: #444;
+}
+
+.ck_converted_content {
+  display: none;
+  padding: 5%;
+  background: #fff;
+}
+
+.ck_form.ck_minimal.width400 .ck_subscribe_button, .ck_form.ck_minimal.width400 input[type="email"] {
+    width: 100%;
+    float: none;
+    margin-top: 5px;
+  }
+
+.ck_slide_up, .ck_modal, .ck_slide_up .ck_minimal, .ck_modal .ck_minimal  {
+  min-width: 400px;
+}
+
+.page .ck_form.ck_minimal {
+  margin: 50px auto;
+  max-width: 600px;
+}
+
+
+
+.ck_powered_by {
+display: none !important;
+}
+.ck_form.ck_minimal {
+background: #fff !important; border: 0 !important;
+}
+
+</style>
+
+
+
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/content-security-policy-csp-strategy">A Content Security Policy (CSP) strategy</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">512</post-id> </item>
+    <item>
+    <title>Cross-Site Request Forgery and Rails</title>
+    <link>https://rorsecurity.info/portfolio/cross-site-request-forgery-and-rails</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Tue, 06 Oct 2015 09:24:40 +0000</pubDate>
+        <guid isPermaLink="false">https://rorsecurity.info/?post_type=jetpack-portfolio&#038;p=374</guid>
+
+          <description><![CDATA[<p>CSRF explained and all related questions answered</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/cross-site-request-forgery-and-rails">Cross-Site Request Forgery and Rails</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<div>
+<h2>The problem</h2>
+</div>
+<div><a href="https://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf" target="_blank" rel="noopener"><img fetchpriority="high" decoding="async" class="alignnone size-medium wp-image-382" src="https://rorsecurity.info/wp-content/uploads/2015/10/csrf-300x286.png" alt="How Cross-Site Request Forgery works in Rails" width="242" height="231" srcset="https://rorsecurity.info/wp-content/uploads/2015/10/csrf-300x286.png 300w, https://rorsecurity.info/wp-content/uploads/2015/10/csrf-48x46.png 48w, https://rorsecurity.info/wp-content/uploads/2015/10/csrf.png 485w" sizes="(max-width: 242px) 100vw, 242px" /></a></div>
+<div><a href="https://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf" target="_blank" rel="noopener">From the Rails security guide</a></div>
+<div>&nbsp;</div>
+<h2>What Rails does against it</h2>
+<div>Rails adds a token to every request that will be verified on the server. The server stores the token in the session, so it’s different for every user and different for every new session. Other websites cannot read the token in the session (by decoding the session cookie of your application) because they don’t have access to other website’s cookies. Tokens that were valid in the past for a certain user will not be valid anymore if the user signed out in between, or if the server expired the session. The purpose of the token is that an attacker doesn’t know the victim’s token and thus a CSRF attack without that token would be refused.</div>
+<div>&nbsp;</div>
+<h2>Isn’t it enough to make everything non-GET in my app?</h2>
+<div>You may have seen CSRF examples that use <code>&lt;img src="http://example.com/projects/destroy“ /&gt;</code> as an attack vector. The browser uses HTTP GET&nbsp;to fetch images, so isn’t it enough to convert this destroy action to HTTP POST (or DELETE)? No, attack websites can also use JavaScript to dynamically create (POST) forms and automatically submit that form. That’s why we need that token.</div>
+<div>&nbsp;</div>
+<h2>How does the token look like?</h2>
+<div>The token will be added automatically to every form like this: <code>&lt;input name="authenticity_token" type="hidden" value="OXuQV+9Q1hi5YkeynLQgVddCRfdUwl0huvqSjoqf4mE=" /&gt;.</code></div>
+<div>&nbsp;</div>
+<h2>Remote forms and the token</h2>
+<div>For remote forms, there will be the same token in a meta tag if <code>&lt;%= csrf_meta_tag %&gt;</code> is added in the layout view. If the token is still not there check application.js for <code>//= require jquery_ujs</code> for the unobtrusive JQuery plugin.</div>
+<div>The unobtrusive <a href="https://github.com/rails/jquery-ujs/blob/master/src/rails.js#L214" target="_blank" rel="noopener">JQuery script</a> will add&nbsp;that token automatically to Ajax requests as an HTTP header called &#8220;X-CSRF-Token&#8221; or a parameter called authenticity_token (if the form is&nbsp;dynamically created). If for some reason you can’t use that script, look at <a href="https://stackoverflow.com/questions/7203304/warning-cant-verify-csrf-token-authenticity-rails" target="_blank" rel="noopener">this answer</a>.</div>
+<div>&nbsp;</div>
+<h2>Configuration</h2>
+<div>The CSRF protection can be turned on with the <a href="https://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection.html" target="_blank" rel="noopener">protect_from_forgery controller method</a> &nbsp;and is included in the ApplicationController by default. So for every non-GET (and non-HEAD) action Rails will check the authenticity token. The first step is to check all routes. Everything that changes the state of the application should be non-GET so that the application will change state only if there’s an authenticity token. HTTP GET is for everything that is more like a question and POST/PUT/PATCH/DELETE to change the state of the application.</div>
+<div>If some GET requests still need to change the state of the application (e.g. counting requests) or you’re thinking about rate limiting GET requests, refer to the <a href="https://rorsecurity.info/portfolio/rackattack-rate-limits-against-ddos-and-abusive-users" target="_blank" rel="noopener">Rack::Attack article</a>.</div>
+<div>&nbsp;</div>
+<h2>JavaScript and CSRF</h2>
+<div>One exception to the above rule is that only Ajax requests are allowed to make GET requests for JavaScript responses. That’s due to an exception to the Same Origin policy of browsers that allows including <code>&lt;script&gt;</code> tags from different origins. So a site from a different origin could include a <code>&lt;script&gt;</code> tag that loads an authorized action via HTTP GET, runs it and then maybe extract secret information. An error will be thrown if someone tries that.</div>
+<div>&nbsp;</div>
+<h2>Different formats</h2>
+<div>The <a href="https://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection.html" target="_blank" rel="noopener">Rails documentation</a>&nbsp;states that only HTML and JavaScript requests are checked. This might be misleading as also JSON requests in the main application will be checked by default. So before you <code>skip_before_action :verify_authenticity_token</code> in the application make sure that those actions don’t use the current user’s session which would make those actions vulnerable.</div>
+<div>&nbsp;</div>
+<h2>CSRF in the API?</h2>
+<div>If you want to skip the CSRF check for your API (as described in the <a href="https://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection.html" target="_blank" rel="noopener">Rails doc</a>), you’ll have to make sure that your API does not work with the same authentication. Because if so, and there’s no CSRF protection in the API, an attacker can simply resort to the API URL to do the CSRF attack.</div>
+<div>To check that, sign in to the application and then enter a URL of the API in the browser and see if you get an answer. If that works, you&#8217;ll want to test the Cross-Site Request Forgery behavior of the API. For that, choose a create action in the API, e.g. example.com/api/users. Now use a request or REST tool in your browser, like Request Maker in Chrome or RESTClient in Firefox. Try to create a new user with the API via&nbsp;<code>example.com/api/users.json?user[login]=test</code>. If this creates a user, this application is vulnerable to CSRF because you didn&#8217;t send the authenticity token that is required for non-GET requests in the rest of the application. You should use a different authentication scheme in the API. Popular approaches for authentication in the API are OAuth2 and API keys.</div>
+<div>&nbsp;</div>
+<h2>What happens if the token is missing or wrong?</h2>
+<div>In Rails 4 there are three „<a href="https://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection/ClassMethods.html#method-i-protect_from_forgery" target="_blank" rel="noopener">escalation strategies</a>“: Throw an exception, create a new session&nbsp;or&nbsp;clear the current session.</div>
+<div>&nbsp;</div>
+<ul>
+<li>&nbsp;<code>protect_from_forgery with: :null_session</code>&nbsp;Set all values to nil in all cookies, including the session. That means the user won’t be logged in anymore for that action and can’t perform the change (if the action requires a signed in user). However, after the action the session values will be back and the session ID will be the same, so the user will be logged in. That’s the difference to the following one.</li>
+<li><code>protect_from_forgery with: :reset_session</code>&nbsp;Create a new session with a new session ID and no values in. That means the user won’t be logged in anymore. If you’re using cookie store for the session, then the old session still exists in the former cookie value (if the user copied it), but will be overwritten in the browser by the new cookie (with the new, empty session in) when the request comes back. Note that Devise by default won&#8217;t reset the „remember me“ cookie. That means if you use that feature and that cookie is present, Devise will sign me in with the new session and perform the change! Test that in your application and possibly overwrite the handle_unverified_request method.</li>
+<li><code>protect_from_forgery with: :exception</code>&nbsp;Raises an ActionController::InvalidAuthenticityToken exception which you can rescue and then return a <a href="https://guides.rubyonrails.org/layouts_and_rendering.html#using-head-to-build-header-only-responses" target="_blank" rel="noopener">header-only response</a>&nbsp;or something more user-friendly:</li>
+</ul>
+<div><code>rescue_from ActionController::InvalidAuthenticityToken do</code></div>
+<div><code>&nbsp; head :bad_request</code></div>
+<div><code>end</code></div>
+<div>&nbsp;</div>
+<div>&nbsp;Note that this doesn’t sign the user out.</div>
+<div>&nbsp;</div>
+<h2>Caching</h2>
+<div>The <a href="https://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.html#method-i-form_tag" target="_blank" rel="noopener"><code>form_tag()</code> helper</a>&nbsp;has an authenticity_token option to set a custom token (probably hardly necessary), or to completely remove it (probably also hardly necessary). But if you’re fragment caching a remote form, you won’t want the token to be cached. The config option <code>config.action_view.embed_authenticity_token_in_remote_forms</code> is false by default anyway because remote forms get the token from the meta tag by JavaScript, so it’s not included in remote forms. Set it to true if you need to support browsers without JavaScript, but then don’t cache the part with the token.</div>
+<div>&nbsp;</div>
+<h2>Can’t an external website just GET the token and then POST something?</h2>
+<div>So if the authenticity token is in a form, can another website use Ajax to retrieve that HTML (using the user’s session), parse the token and then send the CSRF attack, but include the token? That’s not possible because of the <a href="https://www.w3.org/Security/wiki/Same_Origin_Policy" target="_blank" rel="noopener">Same-Origin policy</a>&nbsp;of browsers, an external website cannot send an Ajax request to another domain (unless explicitly allowed by our application).</div>
+<div>Slight modification: Can the web server of that external web site GET the form from our application in the background, parse the HTML and then render a page with a CSRF attack and an authenticity token? No, because the entire idea of the vulnerability is that the attacker uses the victim’s user session in cookies in the browser &#8211; an external web server doesn’t have access to it.</div>
+<p><script src="https://app.convertkit.com/landing_pages/4553.js"></script></p>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/cross-site-request-forgery-and-rails">Cross-Site Request Forgery and Rails</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">374</post-id> </item>
+    <item>
+    <title>Secure configuration of Rails applications</title>
+    <link>https://rorsecurity.info/portfolio/secure-configuration-of-rails-applications</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Thu, 03 Sep 2015 08:58:48 +0000</pubDate>
+        <guid isPermaLink="false">https://rorsecurity.info/?post_type=jetpack-portfolio&#038;p=370</guid>
+
+          <description><![CDATA[<p>Store secrets in the environment variables, secure and manage them</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/secure-configuration-of-rails-applications">Secure configuration of Rails applications</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<div>It’s good practice to keep these configuration secrets (like API keys and passwords) only on the server and not in version control, especially not the production ones. Here’s a bit more why to <a href="https://12factor.net/config" target="_blank" rel="noopener">separate configuration/credentials and code</a>.</div>
+<div>&nbsp;</div>
+<div>Here’s a story&nbsp;of someone who got a huge invoice because he had <a href="https://medium.com/how-i-learned-ruby-rails/how-to-get-robbed-by-insecure-practices-8a1118fe3d7f" target="_blank" rel="noopener">sensitive keys in git</a>.</div>
+<div>&nbsp;</div>
+<div>If you need to remove something from the git history, you can still use <a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">BFG Repo-Cleaner</a>&nbsp;or <a href="https://help.github.com/articles/remove-sensitive-data/" target="_blank" rel="noopener">git-filter-branch</a>.</div>
+<div>&nbsp;</div>
+<h2>Store configuration in the environment</h2>
+<ul>
+<li>You’ll be able to access the environment variables through <code>ENV["KEY"]</code>, or <code>&lt;%= ENV["KEY"] %&gt;</code> in Rails&#8217; YAML config files (config/database.yml and others (see below)). If you want to make sure that all keys are actually set before running the application, use <code>ENV.fetch("KEY")</code> instead. It will throw an error so that you&#8217;ll find out quickly if the key doesn’t exist.</li>
+<li>Rails 4.1. added the <code>config/secrets.yml</code> file which makes the variables stored in there accessible through <code>Rails.application.secrets</code>, for example <code>&lt;%= Rails.application.secrets[:database][:host] %&gt;</code>. In <code>config/secrets.yml</code> you can still use the environment variables (and for production you should).</li>
+<li><a href="https://www.justinweiss.com/blog/2014/08/25/the-lesser-known-features-in-rails-4-dot-2/" target="_blank" rel="noopener">Rails 4.2. added <code>config_for</code></a>. In the configuration you should still use the environment variables <code>&lt;%= ENV.fetch("KEY") %&gt;</code>.</li>
+</ul>
+<div>&nbsp;</div>
+<h2>How to manage environment variables</h2>
+<ul>
+<li>Don&#8217;t keep the environment variables in the <code>.bashrc</code> or <code>.bash-profile</code> files because that means they&#8217;re available to every process that you run as that user. Think about the worst case scenario, a bug in one of those processes would maybe expose those variables. Below you&#8217;ll find some other options, preferably choose one that makes the variables only available to the Rails process.</li>
+<li>Load <a href="https://github.com/bkeepers/dotenv" target="_blank" rel="noopener">environment variables from <code>.env files</code>.</a> But don’t commit those files. Their purpose is to configure a development system, but could be used on the server, too. This means you’ll have to set a reminder to change the production environment when deploying a new version. This will only make the env variables available to the Rails process, not as global variables.</li>
+<li><code><a href="https://github.com/sstephenson/rbenv-vars" target="_blank" rel="noopener">Rbenv-vars</a></code> and <a href="https://rvm.io/" target="_blank" rel="noopener"><code>.ruby-env</code> files in RVM</a> &nbsp;work similarly without adding another gem dependency.</li>
+<li>There are deployment tools like Ansible, Puppet or Chef to configure a server environment. However, don&#8217;t set global environment variables with this.</li>
+<li>Heroku or other PaaS services provide command line tools to set the environment variables on the server. <a href="https://github.com/laserlemon/figaro" target="_blank" rel="noopener">Figaro</a>&nbsp;can help simplify that process.</li>
+<li>However, you’ll still need a process of how new or changed development config variables get to the right place. Some teams use central wikis to keep the newest (development, safe-to-share) environment variables.</li>
+</ul>
+<p>So&nbsp;use&nbsp;environment variables to&nbsp;manage all in one place, get it to the developers and production using one of the above solutions and maybe use Rails&#8217; config_for or secrets.yml (with environment variables in it) if you prefer that syntax.</p>
+<div>&nbsp;</div>
+<h2>Keep environment variables secure</h2>
+<ul>
+<li>As <a href="https://blog.honeybadger.io/securing-environment-variables/" target="_blank" rel="noopener">this piece points out</a>, a process run by your Ruby/Rails app will inherit the environment variables of the parent process. So you should empty out the environment variables before executing a&nbsp;command that you haven&#8217;t written.</li>
+<li>For example with:&nbsp;<code>system(Hash[ENV.map&nbsp;{|key,value|&nbsp;[key,&nbsp;nil]}],&nbsp;"echo&nbsp;$RAILS_ENV")</code>&nbsp;RAILS_ENV will be empty for the echo process.</li>
+<li>Secure the environment variable files by giving them only the permissions that they really need: <code>chmod 600 .env</code>.</li>
+</ul>
+<p><script src="https://app.convertkit.com/landing_pages/4553.js"></script></p>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/secure-configuration-of-rails-applications">Secure configuration of Rails applications</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">370</post-id> </item>
+    <item>
+    <title>Command injection in Rails</title>
+    <link>https://rorsecurity.info/portfolio/command-injection-in-rails</link>
+    
+    <dc:creator><![CDATA[Updates]]></dc:creator>
+    <pubDate>Thu, 27 Aug 2015 15:23:27 +0000</pubDate>
+        <guid isPermaLink="false">https://rorsecurity.info/?post_type=jetpack-portfolio&#038;p=364</guid>
+
+          <description><![CDATA[<p>Injecting parameters or entire Unix commands</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/command-injection-in-rails">Command injection in Rails</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<div>An application will be vulnerable to <a href="https://www.owasp.org/index.php/Command_Injection" target="_blank" rel="noopener">command injection</a>, if an attacker may influence command line parameters or entire Unix commands. This is less likely in Rails, because running Unix commands directly in Rails is not extremely common. However, the vulnerability might also be in a background process that uses customer data in a Unix command directly.</div>
+<div>&nbsp;</div>
+<div>Here are common Rails command line methods:</div>
+<ul>
+<li style="text-align: left;"><code>%x[...]</code></li>
+<li style="text-align: left;"><code>system()</code></li>
+<li style="text-align: left;"><code>exec()</code></li>
+<li style="text-align: left;"><code>`...`</code></li>
+</ul>
+<div>&nbsp;Also note that there is more than one way how to chain commands together, but that depends on the hosting operating system. Examples: <code>"&amp;", "&amp;&amp;", "|", "||"</code> etc.</div>
+<div>&nbsp;</div>
+<h4>Keep environment variables secure when running commands</h4>
+<p>A process run by your Rails app will inherit the environment variables of the parent process that might include API keys and the like. See the <a href="https://rorsecurity.info/portfolio/secure-configuration-of-rails-applications">Secure configuration section</a> for more on that second line of defense.</p>
+<hr>
+<h2><b>Another type: ImageMagick Command Injection</b></h2>
+<p><span style="font-weight: 400;">When using <a href="https://www.imagemagick.org/">ImageMagick</a> to manipulate images, Rails makes a shell call and passes command line arguments to an executable. If those arguments come from a user-supplied source, they could be crafted to cause ImageMagick to use excessive CPU or time.</span></p>
+<h4><b>What are the Possible Risks?</b></h4>
+<p><span style="font-weight: 400;">The likeliest scenario is a denial of service attack, where the user causes ImageMagick to consume enough CPU or memory resources to bog down the server. It’s also possible to delete or overwrite files by passing in additional options to ImageMagick.</span></p>
+<h4><b>What can I do against ImageMagick&nbsp;</b><b>Command Injection in Rails?</b></h4>
+<p><span style="font-weight: 400;">When you’re dealing with a list of known parameters, as here, it’s easiest to validate user input against a regex or set of known secure responses. The Dragonfly</span><a href="https://github.com/markevans/dragonfly/blob/b681ce2e44139aa7632c5331dc5601530b23d82f/lib/dragonfly/image_magick/processors/thumb.rb#L19"> <span style="font-weight: 400;">library</span></a><span style="font-weight: 400;">, for example, does a good job of checking user arguments (e.g. resize requests) to make sure they’re safe:</span></p>
+<p><code><span style="font-weight: 400;">RESIZE_GEOMETRY = /\A\d*x\d*[&gt;&lt;%^!]?\z|\A\d+@\z/ # e.g. '300x200!'</span></code></p>
+<p><script src="https://app.convertkit.com/landing_pages/4553.js"></script></p>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/command-injection-in-rails">Command injection in Rails</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">364</post-id> </item>
+    <item>
+    <title>HTML-safe, ActiveSupport::SafeBuffer explained</title>
+    <link>https://rorsecurity.info/portfolio/html-safe-activesupportsafebuffer-explained</link>
+    
+    <dc:creator><![CDATA[Heiko]]></dc:creator>
+    <pubDate>Tue, 25 Aug 2015 09:26:42 +0000</pubDate>
+        <guid isPermaLink="false">https://rorsecurity.info/?post_type=jetpack-portfolio&#038;p=352</guid>
+
+          <description><![CDATA[<p>How does Rails' XSS protection work exactly</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/html-safe-activesupportsafebuffer-explained">HTML-safe, ActiveSupport::SafeBuffer explained</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<ul>
+<li>Rails 3 introduced the <a href="https://api.rubyonrails.org/classes/ActiveSupport/SafeBuffer.html" target="_blank" rel="noopener">ActiveSupport::SafeBuffer</a> module to add an HTML-safe flag to strings. It&#8217;s false by default, especially when the string comes from an external source like params or the database. You can return the flag with &#8220;string&#8221;.html_safe?.</li>
+<li>The HTML-escape method h(), well, escapes the string and marks a string HTML-safe.
+<pre>h("html&gt;").html_safe? #=&gt; true 
+("html&amp;gt;").html_safe? #=&gt; false</pre>
+</li>
+<li>The Erb notation &lt;%= &#8220;string&#8221; %&gt; inspects the HTML-safe flag of the string. If it&#8217;s false it will escape the string automatically, otherwise it won&#8217;t.</li>
+<li>There&#8217;s a method called #html_safe, that marks a string HTML-safe. It&#8217;s a common misconception that this method makes the string safe, it doesn&#8217;t. If you know that the string is safe, you can call this method, but it will only set the HTML-safe flag. So you should never do &lt;%= params[:user_input].html_safe %&gt;. Use the h() method to make it really HTML-safe by escaping it.</li>
+<li>The raw() method is similar to the html_safe method. So you should never do: &lt;%= raw params[:user_input] %&gt;</li>
+<li>This is how the string concatenation methods (+, concat(), &lt;&lt;) work:
+<ul>
+<li>If the left side is HTML-unsafe or the right side is HTML-safe, then it works like normal string concatenation and keeps the HTML-safe flag of the left side</li>
+<li>Otherwise it will HTML-escape the right side and add it to the string</li>
+</ul>
+</li>
+</ul>
+<p><script src="https://app.convertkit.com/landing_pages/4553.js"></script></p>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/html-safe-activesupportsafebuffer-explained">HTML-safe, ActiveSupport::SafeBuffer explained</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">352</post-id> </item>
+    <item>
+    <title>XSS protection in Haml templates</title>
+    <link>https://rorsecurity.info/portfolio/xss-protection-in-haml-templates</link>
+    
+    <dc:creator><![CDATA[Heiko]]></dc:creator>
+    <pubDate>Tue, 25 Aug 2015 09:08:30 +0000</pubDate>
+        <guid isPermaLink="false">https://rorsecurity.info/?post_type=jetpack-portfolio&#038;p=351</guid>
+
+          <description><![CDATA[<p>Haml templates support Rails’ XSS protection</p>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/xss-protection-in-haml-templates">XSS protection in Haml templates</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></description>
+                    <content:encoded><![CDATA[<div class="entry-content" itemprop="text">
+<p>If you&#8217;re using Haml templates, instead of ERB, strings are automatically escaped in the same way as in ERB templates. Also like in ERB templates, HTML-safe strings (string.html_safe? returns true) won&#8217;t be escaped automatically. The <a href="https://haml.info/docs/yardoc/file.REFERENCE.html#rails_xss_protection" target="_blank" rel="noopener">!= notation in Haml</a> works like &lt;%= raw(&#8230;) %&gt; in ERB, so it will render the unescaped version.</p>
+<p>By default,</p>
+<pre>= "&lt;em&gt;emphasized&lt;/em&gt;"
+!= "&lt;em&gt;emphasized&lt;/em&gt;"</pre>
+<p>compiles to:</p>
+<pre>&amp;lt;em&amp;gt;emphasized&amp;lt;/em&amp;gt;
+&lt;em&gt;emphasized&lt;/em&gt;</pre>
+<p>So take care when using != in Haml, make sure no user data will be rendered unescaped.</p>
+<p><script src="https://app.convertkit.com/landing_pages/4553.js"></script></p>
+
+
+</div>
+<p>The post <a rel="nofollow" href="https://rorsecurity.info/portfolio/xss-protection-in-haml-templates">XSS protection in Haml templates</a> appeared first on <a rel="nofollow" href="https://rorsecurity.info">Ruby on Rails Security Project</a>.</p>
+]]></content:encoded>
+          
+    
+    
+    <post-id xmlns="com-wordpress:feed-additions:1">351</post-id> </item>
+  </channel>
+</rss>
